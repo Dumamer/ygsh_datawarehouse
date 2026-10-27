@@ -71,3 +71,7 @@ desktop.ini
 # Office 临时文件
 # ============================================================
 ~$*
+
+# 截图生成中间产物
+scripts/_edgetmp/
+docs/screenshots/_html/
