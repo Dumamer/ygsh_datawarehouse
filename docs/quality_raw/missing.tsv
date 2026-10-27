@@ -1,0 +1,5 @@
+ods_user	age	51	0.051	中位数填充（有效年龄 1~120 的中位数）	78	0
+ods_user	email	193	0.193	保留空值 + 新增 email_is_missing 标记位	0	193
+ods_user	gender	84	0.084	填充为「未知」	84	0
+ods_user	member_level	14	0.014	填充为默认等级「普通会员」	14	0
+ods_product	launch_date	11	0.0183	按同品类上架日期均值回退补全	11	0
