@@ -1,0 +1,73 @@
+OK
+dup_order_id_cnt	extra_rows	dup_rate
+586	600	0.0385
+Time taken: 7.207 seconds, Fetched: 1 row(s)
+OK
+dup_groups	extra_rows
+394	400
+Time taken: 2.924 seconds, Fetched: 1 row(s)
+OK
+o.order_id	o.user_id	o.order_date	o.order_time	o.pay_amount	o.pay_type	o.channel
+O2024000009	U000652	2024-01-08	00:05:32	2628.55	支付宝	小程序
+O2024000009	U000652	2024-01-08	00:05:32	3729.84	支付宝	小程序
+O2024000295	U000770	2024-10-04	22:35:40	3497.72	货到付款	APP
+O2024000295	U000770	2024-10-04	22:35:40	3223.6	货到付款	APP
+O2024000483	U000844	2024-10-25	06:52:22	2892.97	支付宝	APP
+O2024000483	U000844	2024-10-25	06:52:22	-4549.93	支付宝	APP
+O2024000487	U000956	2024-08-07	12:25:26	4265.67	货到付款	pc
+O2024000487	U000956	2024-08-07	12:25:26	494.79	货到付款	pc
+O2024000554	U000078	2024/07/12	13:43:14	2692.85	货到付款	app
+O2024000554	U000078	2024/07/12	13:43:14	4719.68	货到付款	app
+Time taken: 4.531 seconds, Fetched: 10 row(s)
+OK
+Time taken: 0.716 seconds
+OK
+Time taken: 0.198 seconds
+Loading data to table ydsh_dq.dq_order_dup_analysis
+OK
+_c0	_c1	_c2	_c3
+Time taken: 12.926 seconds
+OK
+Time taken: 0.106 seconds
+OK
+Time taken: 0.019 seconds
+Loading data to table ydsh_dwd.dwd_order
+OK
+order_id	user_id	store_id	order_date	order_time	pay_amount	discount_amount	pay_type	order_status	channel	pay_amount_valid
+Time taken: 3.238 seconds
+OK
+Time taken: 0.182 seconds
+OK
+Time taken: 0.018 seconds
+Loading data to table ydsh_dq.dq_dedup_stat
+OK
+_c0	_c1
+Time taken: 1.676 seconds
+Loading data to table ydsh_dq.dq_dedup_stat
+OK
+_c0	_c1
+Time taken: 1.681 seconds
+Loading data to table ydsh_dq.dq_dedup_stat
+OK
+_c0	_c1
+Time taken: 5.913 seconds
+OK
+dq_dedup_stat.item	dq_dedup_stat.row_cnt
+去重前 ods_order 行数	15600
+去重后 dwd_order 行数	15000
+减少行数	600
+Time taken: 0.056 seconds, Fetched: 3 row(s)
+OK
+remaining_dup_keys
+0
+Time taken: 2.862 seconds, Fetched: 1 row(s)
+OK
+removed_rows	expected_removed	result
+600	600	PASS
+Time taken: 2.894 seconds, Fetched: 1 row(s)
+OK
+dwd_order.order_id	dwd_order.user_id	dwd_order.store_id	dwd_order.order_date	dwd_order.order_time	dwd_order.pay_amount	dwd_order.discount_amount	dwd_order.pay_type	dwd_order.order_status	dwd_order.channel	dwd_order.pay_amount_valid
+O2024001324	U000331	S015	2024/12/10	02:49:53	3821.74	351.11	货到付款	已完成	门店	1
+O2024004513	U000242	S033	2024-11-18	21:22:06	4197.56	634.51	支付宝	已完成	小程序	1
+O2024008316	U000711	S039	2024/04/01	15:59:28	4935.73	1474.34	支付宝	已取消	APP	1
+Time taken: 0.055 seconds, Fetched: 3 row(s)
