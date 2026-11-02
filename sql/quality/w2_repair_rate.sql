@@ -7,6 +7,17 @@
 -- =====================================================================
 SET hive.auto.convert.join=false;
 SET hive.vectorized.execution.enabled=false;
+SET hive.vectorized.execution.reduce.enabled=false;
+
+CREATE DATABASE IF NOT EXISTS ydsh_dq;
+
+-- 说明：统计口径只写在这一处。结果先落表 ydsh_dq.dq_w2_repair_rate，
+-- 再由 w2_export_tsv.sql 导出 tsv 给 Excel 报告用。
+-- （早先导出脚本里另抄了一份同样的 SQL，改口径时两边漂移过一次，故改为单一来源。）
+DROP TABLE IF EXISTS ydsh_dq.dq_w2_repair_rate;
+CREATE TABLE ydsh_dq.dq_w2_repair_rate
+COMMENT '第 2 周五类脏数据修复率明细（38 条记录：20 类问题 + 17 条残留校验 + 邮箱策略行）'
+STORED AS ORC AS
 
 -- ---------- 缺失值 ----------
 SELECT '1-缺失值' AS dim_type, '用户年龄（缺失/越界/非正）' AS issue,
@@ -31,6 +42,11 @@ SELECT '1-缺失值', '商品上架日期-清洗后残留（DWD）', 0,
 UNION ALL
 SELECT '1-缺失值', '用户邮箱（空值｜策略=保留+标记，不修复）',
        SUM(IF(TRIM(email)='' OR email IS NULL, 1, 0)), 0 FROM ydsh_ods.ods_user
+-- 邮箱是「策略性保留」，清洗后依然是 193 条空值（只多了 email_is_missing 标记），
+-- 因此这一行的残留数如实为 193、修复率 0%；报告脚本把它排除在修复分母之外并单列说明。
+UNION ALL
+SELECT '1-缺失值', '用户邮箱-清洗后残留（DWD，策略性保留）', 0,
+       SUM(IF(TRIM(email)='' OR email IS NULL, 1, 0)) FROM ydsh_dwd.dim_user
 
 -- ---------- 重复值 ----------
 UNION ALL
@@ -147,4 +163,9 @@ UNION ALL
 SELECT '5-格式', '手机号-清洗后残留（DWD）', 0,
        SUM(IF(NOT phone RLIKE '^1[0-9]{10}$', 1, 0)) FROM ydsh_dwd.dim_user
 
+;
+
+-- 结果回读：运行记录里可直接看到 38 行，便于逐项核对
+SELECT dim_type, issue, before_cnt, after_cnt
+FROM ydsh_dq.dq_w2_repair_rate
 ORDER BY dim_type, issue;

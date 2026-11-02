@@ -1,4 +1,12 @@
 OK
+Time taken: 0.565 seconds
+OK
+Time taken: 0.812 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_dq.db/dq_w2_repair_rate
+OK
+dim_type	issue	before_cnt	after_cnt
+Time taken: 97.597 seconds
+OK
 dim_type	issue	before_cnt	after_cnt
 1-缺失值	会员等级（空值）	14	0
 1-缺失值	商品上架日期-清洗后残留（DWD）	0	0
@@ -6,6 +14,7 @@ dim_type	issue	before_cnt	after_cnt
 1-缺失值	用户年龄-清洗后残留（DWD）	0	0
 1-缺失值	用户年龄（缺失/越界/非正）	78	0
 1-缺失值	用户性别（空值）	84	0
+1-缺失值	用户邮箱-清洗后残留（DWD，策略性保留）	0	193
 1-缺失值	用户邮箱（空值｜策略=保留+标记，不修复）	193	0
 2-重复值	订单主键重复-清洗后残留（DWD）	0	0
 2-重复值	订单主键重复多出行（15600-15000）	600	0
@@ -37,4 +46,4 @@ dim_type	issue	before_cnt	after_cnt
 5-格式	行为时间非 yyyy-MM-dd HH:mm:ss（斜杠/缺秒）	6088	0
 5-格式	订单日期-清洗后残留（DWD）	0	0
 5-格式	订单日期非 yyyy-MM-dd（斜杠）	1902	0
-Time taken: 100.715 seconds, Fetched: 37 row(s)
+Time taken: 1.553 seconds, Fetched: 38 row(s)

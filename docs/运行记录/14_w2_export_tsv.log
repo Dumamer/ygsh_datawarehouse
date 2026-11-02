@@ -1,42 +1,36 @@
-OK
-Time taken: 1.385 seconds
-Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_dq.db/dq_w2_repair_rate
-OK
-dim_type	issue	before_cnt	after_cnt
-Time taken: 97.96 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/repair_rate
 OK
 dim_type	issue	before_cnt	after_cnt
-Time taken: 1.603 seconds
+Time taken: 3.845 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/kpi
 OK
 ads_kpi_overview.total_orders	ads_kpi_overview.total_buyers	ads_kpi_overview.total_users	ads_kpi_overview.total_gmv	ads_kpi_overview.aov	ads_kpi_overview.discount_rate	ads_kpi_overview.refunding_rate
-Time taken: 1.428 seconds
+Time taken: 1.475 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/category
 OK
 ads_category_sales.category	ads_category_sales.order_cnt	ads_category_sales.total_qty	ads_category_sales.sales_amount	ads_category_sales.rank_no
-Time taken: 1.433 seconds
+Time taken: 1.447 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/province
 OK
 ads_province_sales.province	ads_province_sales.order_cnt	ads_province_sales.gmv	ads_province_sales.rank_no
-Time taken: 1.41 seconds
+Time taken: 1.468 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/channel
 OK
 ads_channel_sales.channel	ads_channel_sales.order_cnt	ads_channel_sales.gmv
-Time taken: 1.42 seconds
+Time taken: 1.458 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/user_top10
 OK
 ads_user_top10.user_id	ads_user_top10.user_name	ads_user_top10.member_level	ads_user_top10.total_amount	ads_user_top10.rank_no
-Time taken: 1.428 seconds
+Time taken: 1.434 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/sales_ym
 OK
 dws_sales_ym.stat_month	dws_sales_ym.order_cnt	dws_sales_ym.buyer_cnt	dws_sales_ym.gmv	dws_sales_ym.aov
-Time taken: 1.433 seconds
+Time taken: 1.438 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/order_stats
 OK
 orders	users
-Time taken: 6.188 seconds
+Time taken: 6.757 seconds
 Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/tbl_rows
 OK
 t	c
-Time taken: 35.128 seconds
+Time taken: 35.567 seconds
