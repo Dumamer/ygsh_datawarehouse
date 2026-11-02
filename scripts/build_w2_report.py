@@ -189,7 +189,7 @@ widths = [10, 40, 12, 12, 11, 12, 52]
 for i, w in enumerate(widths, 1):
     ws.column_dimensions[get_column_letter(i)].width = w
 title_bar(ws, "五类脏数据 · 逐项修复率明细", len(widths),
-          "共 20 类问题（37 条记录，含清洗前/残留成对行）；修复率 100% 表示清洗后 DWD 层该类问题零残留")
+          "共 20 类问题（38 条记录，含清洗前/残留成对行）；修复率 100% 表示清洗后 DWD 层该类问题零残留")
 heads = ["类别", "问题项", "清洗前", "清洗后", "修复率", "判定", "处理策略"]
 for i, h in enumerate(heads, 1):
     ws.cell(row=3, column=i, value=h)
@@ -221,8 +221,8 @@ for dim, issue, before in mains:
     if rt is None:
         c.fill = PatternFill("solid", fgColor="F2F2F2")
     elif is_email:
-        # 邮箱未真正"修复"，只是按策略保留并打标，修复率加 * 以示区别
-        c.value = "%.1f%%*" % (rt * 100)
+        # 邮箱未真正"修复"，193 条空值按策略保留，修复率如实为 0%，单列以免误判
+        c.value = "0.0%（策略性保留）"
         c.fill = PatternFill("solid", fgColor="FFF2CC")
     elif rt >= 0.999:
         c.font = Font(name="微软雅黑", size=10, bold=True, color="1E6B33")
@@ -247,17 +247,20 @@ for dim, issue, before in mains:
         if band:
             cell.fill = PatternFill("solid", fgColor=C_BAND)
     ws.row_dimensions[r].height = 28
-    by_cat.setdefault(dim, [0, 0])
-    by_cat[dim][0] += before
-    by_cat[dim][1] += after
+    # 策略性保留项不计入修复分母：否则 193 条「本就不打算修」的空值会把
+    # 缺失值维度的修复率从 100% 拉低到 49%，读表的人会误判为清洗没做好
+    if not is_email:
+        by_cat.setdefault(dim, [0, 0])
+        by_cat[dim][0] += before
+        by_cat[dim][1] += after
     band = not band
     r += 1
 ws.freeze_panes = "A4"
 note_r = r + 1
 ws.merge_cells(start_row=note_r, start_column=1, end_row=note_r, end_column=len(heads))
 nc = ws.cell(row=note_r, column=1,
-             value="注：带 * 的「用户邮箱」并非清洗修复，而是策略性保留空值并新增 email_is_missing 标记位——"
-                   "编造邮箱会直接污染下游退信率指标，保真比「100%」更有价值。")
+             value="注：「用户邮箱」193 条空值不是清洗修复项，而是策略性保留并新增 email_is_missing 标记位——"
+                   "编造邮箱会直接污染下游退信率指标，保真比「100%」更有价值。该行不计入五类汇总的修复分母。")
 nc.font = Font(name="微软雅黑", size=9, italic=True, color="9C5700")
 nc.alignment = WRAP
 ws.row_dimensions[note_r].height = 30
@@ -272,7 +275,7 @@ for i, h in enumerate(["脏数据类型", "清洗前", "清洗后", "修复率",
     ws.cell(row=3, column=i, value=h)
 style_header(ws, 3, 5)
 note = {
-    "1-缺失值": "年龄/性别/等级/上架日期已 100% 处理；邮箱按策略保留并打标",
+    "1-缺失值": "年龄/性别/等级/上架日期已 100% 处理；邮箱 193 条策略性保留并打标，不计入分母",
     "2-重复值": "600 行重复全部去除，15000 条唯一订单",
     "3-异常值": "金额/折扣/单价/数量四类数值异常全部处理",
     "4-枚举值": "6 个枚举字段收敛到规范中文值域，无残留",
@@ -302,7 +305,7 @@ ws.cell(row=r, column=1, value="合计").font = F_BOLD
 ws.cell(row=r, column=2, value=tot_b).font = F_BOLD
 ws.cell(row=r, column=3, value=tot_a).font = F_BOLD
 ws.cell(row=r, column=4, value="%.1f%%" % ((tot_b - tot_a) / tot_b * 100)).font = F_BOLD
-ws.cell(row=r, column=5, value="邮箱 193 条按策略保留，不计入修复分母的失败项").font = F_BODY
+ws.cell(row=r, column=5, value="分母已剔除邮箱 193 条（策略性保留，未编造）；剩余问题点全部修复").font = F_BODY
 for cc in range(1, 6):
     ws.cell(row=r, column=cc).fill = PatternFill("solid", fgColor=C_BAND)
     ws.cell(row=r, column=cc).border = BORDER
