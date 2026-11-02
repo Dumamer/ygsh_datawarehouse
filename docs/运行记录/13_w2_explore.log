@@ -1,0 +1,143 @@
+OK
+Time taken: 0.651 seconds
+OK
+Time taken: 0.002 seconds
+OK
+Time taken: 0.927 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_dws.db/dws_sales_ym
+OK
+stat_month	order_cnt	buyer_cnt	gmv	aov
+Time taken: 12.506 seconds
+OK
+Time taken: 0.125 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_dws.db/dws_store_sales_d
+OK
+o.store_id	s.store_name	o.order_date	order_cnt	gmv
+Time taken: 9.073 seconds
+OK
+Time taken: 0.103 seconds
+Warning: Shuffle Join JOIN[16][tables = [$hdt$_0, $hdt$_1]] in Stage 'Stage-2:MAPRED' is a cross product
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_kpi_overview
+OK
+total_orders	total_buyers	total_users	total_gmv	aov	discount_rate	refunding_rate
+Time taken: 10.197 seconds
+OK
+Time taken: 0.106 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_category_sales
+OK
+p.category	order_cnt	total_qty	sales_amount	rank_no
+Time taken: 11.698 seconds
+OK
+Time taken: 0.098 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_province_sales
+OK
+u.province	order_cnt	gmv	rank_no
+Time taken: 9.11 seconds
+OK
+Time taken: 0.1 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_channel_sales
+OK
+o.channel	order_cnt	gmv
+Time taken: 6.436 seconds
+OK
+Time taken: 0.109 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_user_cumsum_top
+OK
+s.user_id	s.order_date	s.pay_amount	s.cum_amount	s.seq_no
+Time taken: 6.395 seconds
+OK
+Time taken: 0.104 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_user_top10
+OK
+user_id	user_name	member_level	total_amount	rank_no
+Time taken: 9.154 seconds
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.195 seconds
+OK
+ads_kpi_overview.total_orders	ads_kpi_overview.total_buyers	ads_kpi_overview.total_users	ads_kpi_overview.total_gmv	ads_kpi_overview.aov	ads_kpi_overview.discount_rate	ads_kpi_overview.refunding_rate
+12505	1000	1000	3.184552795E7	2546.62	0.128	0.0631
+Time taken: 0.046 seconds, Fetched: 1 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.045 seconds
+OK
+dws_sales_ym.stat_month	dws_sales_ym.order_cnt	dws_sales_ym.buyer_cnt	dws_sales_ym.gmv	dws_sales_ym.aov
+2024-01	1071	656	2822591.29	2635.47
+2024-02	985	617	2543763.62	2582.5
+2024-03	1060	658	2690192.29	2537.92
+2024-04	1015	638	2670250.38	2630.79
+2024-05	1080	670	2706702.6	2506.21
+2024-06	948	617	2442234.72	2576.2
+2024-07	1056	658	2639587.58	2499.61
+2024-08	1090	671	2732709.98	2507.07
+2024-09	1024	651	2580602.64	2520.12
+2024-10	1091	693	2633628.29	2413.96
+2024-11	1011	657	2603398.4	2575.07
+2024-12	1074	667	2779866.16	2588.33
+Time taken: 1.418 seconds, Fetched: 12 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.045 seconds
+OK
+ads_category_sales.category	ads_category_sales.order_cnt	ads_category_sales.total_qty	ads_category_sales.sales_amount	ads_category_sales.rank_no
+运动户外	3937	19029	7.121101585E7	1
+数码家电	3662	16461	6.547113548E7	2
+服饰鞋包	3408	15757	6.188811087E7	3
+食品生鲜	3362	15187	5.848979124E7	4
+图书文娱	3388	14743	5.572334423E7	5
+家居生活	3071	14510	5.415944894E7	6
+母婴玩具	3025	13017	4.94744419E7	7
+美妆个护	3080	13316	4.905524325E7	8
+Time taken: 1.415 seconds, Fetched: 8 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.047 seconds
+OK
+ads_province_sales.province	ads_province_sales.order_cnt	ads_province_sales.gmv	ads_province_sales.rank_no
+陕西省	965	2446070.52	1
+重庆市	913	2326336.32	2
+辽宁省	912	2326316.11	3
+安徽省	919	2281541.81	4
+河南省	907	2265824.88	5
+北京市	895	2251963.55	6
+福建省	861	2225487.83	7
+上海市	858	2193031.43	8
+Time taken: 1.422 seconds, Fetched: 8 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.044 seconds
+OK
+ads_channel_sales.channel	ads_channel_sales.order_cnt	ads_channel_sales.gmv
+PC官网	3102	8012607.52
+APP	3185	8003091.77
+门店	3107	7931987.45
+小程序	3111	7897841.21
+Time taken: 1.436 seconds, Fetched: 4 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.054 seconds
+OK
+ads_user_top10.user_id	ads_user_top10.user_name	ads_user_top10.member_level	ads_user_top10.total_amount	ads_user_top10.rank_no
+U000987	曹桂英	普通会员	67095.19	1
+U000273	刘杰	普通会员	64461.8	2
+U000465	胡明	钻石会员	62129.63	3
+U000322	谢勇	金卡会员	62077.63	4
+U000039	周伟	普通会员	61816.26	5
+U000036	唐敏	银卡会员	61793.45	6
+U000473	杨欣	钻石会员	60607.65	7
+U000355	朱磊	普通会员	60039.63	8
+U000758	梁敏	银卡会员	59420.6	9
+U000631	胡洋	金卡会员	58272.23	10
+Time taken: 1.43 seconds, Fetched: 10 row(s)
+OK
+sec	_c1	_c2	_c3
+Time taken: 0.042 seconds
+OK
+ads_user_cumsum_top.user_id	ads_user_cumsum_top.order_date	ads_user_cumsum_top.pay_amount	ads_user_cumsum_top.cum_amount	ads_user_cumsum_top.seq_no
+U000001	2024-01-29	2191.97	2191.97	1
+U000001	2024-04-21	3917.88	6109.85	2
+U000001	2024-06-08	3683.0	9792.85	3
+U000001	2024-06-12	3721.81	13514.66	4
+U000001	2024-07-16	658.25	14172.91	5
+Time taken: 1.415 seconds, Fetched: 5 row(s)

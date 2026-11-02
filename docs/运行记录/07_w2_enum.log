@@ -1,0 +1,71 @@
+OK
+Time taken: 3.566 seconds
+OK
+Time taken: 0.079 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-07_596_3269417032270253741-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_user_std
+OK
+user_id	user_name	gender	member_level	age	city	province	register_date	phone	email
+Time taken: 3.781 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-11_480_1196555572478450232-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_product_std
+OK
+product_id	product_name	category	sub_category	brand	launch_date	price	cost	stock	status
+Time taken: 1.577 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-13_179_8376071696294779132-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_order_code
+OK
+order_id	user_id	store_id	order_date	order_time	pay_amount	discount_amount	pay_type_code	order_status_code	channel_code
+Time taken: 1.631 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-14_912_2191508520063286746-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_item_code
+OK
+item_id	order_id	product_id	quantity	unit_price	discount
+Time taken: 1.623 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-16_659_4709073569228359459-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_behavior_code
+OK
+user_id	product_id	behavior_type_code	behavior_time
+Time taken: 1.58 seconds
+OK
+chk	val	c
+t_behavior.behavior_type_code	pv	33549
+t_behavior.behavior_type_code	buy	11393
+t_behavior.behavior_type_code	cart	7640
+t_behavior.behavior_type_code	fav	4969
+t_behavior.behavior_type_code	加购	646
+t_behavior.behavior_type_code	收藏	616
+t_behavior.behavior_type_code	浏览	611
+t_behavior.behavior_type_code	购买	576
+t_order.channel_code	APP	4024
+t_order.channel_code	门店	3862
+t_order.channel_code	小程序	3845
+t_order.channel_code	PC官网	3729
+t_order.channel_code	PC	140
+t_order.order_status_code	已完成	5498
+t_order.order_status_code	已支付	4102
+t_order.order_status_code	待支付	1990
+t_order.order_status_code	已取消	1800
+t_order.order_status_code	退款中	835
+t_order.order_status_code	1	211
+t_order.order_status_code	3	202
+t_order.order_status_code	cancelled	198
+t_order.order_status_code	已付款	197
+t_order.order_status_code	2	193
+t_order.order_status_code	完成	192
+t_order.order_status_code	4	182
+t_order.pay_type_code	支付宝	3944
+t_order.pay_type_code	微信支付	3711
+t_order.pay_type_code	货到付款	3693
+t_order.pay_type_code	银行卡	3601
+t_order.pay_type_code	wechat	227
+t_order.pay_type_code	微信	218
+t_order.pay_type_code	alipay	206
+t_user.gender	女	429
+t_user.gender	男	379
+t_user.gender	未知	192
+t_user.member_level	金卡会员	273
+t_user.member_level	钻石会员	253
+t_user.member_level	普通会员	244
+t_user.member_level	银卡会员	230
+Time taken: 11.261 seconds, Fetched: 39 row(s)

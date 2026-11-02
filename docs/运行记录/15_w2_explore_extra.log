@@ -1,0 +1,114 @@
+OK
+Time taken: 0.715 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_store_sales
+OK
+x.store_id	x.store_name	x.province	x.order_cnt	x.gmv	gmv_share	rank_no
+Time taken: 9.46 seconds
+OK
+Time taken: 0.006 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_member_level_sales
+OK
+y.member_level	y.buyer_cnt	y.order_cnt	y.gmv	aov	arpu	gmv_share
+Time taken: 11.728 seconds
+OK
+Time taken: 0.004 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_weekend_sales
+OK
+dd.is_weekend	order_cnt	day_cnt	gmv	gmv_per_day	aov
+Time taken: 9.126 seconds
+OK
+Time taken: 0.003 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_repeat_purchase
+OK
+f.bucket	user_cnt	gmv	arpu	gmv_share
+Time taken: 10.396 seconds
+OK
+Time taken: 0.003 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_ads.db/ads_month_mom
+OK
+m.stat_month	m.gmv	m.order_cnt	m.aov	prev_gmv	mom_pct
+Time taken: 1.572 seconds
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.202 seconds
+OK
+ads_store_sales.store_id	ads_store_sales.store_name	ads_store_sales.province	ads_store_sales.order_cnt	ads_store_sales.gmv	ads_store_sales.gmv_share	ads_store_sales.rank_no
+S029	云购生活·北京二店	北京市	251	647471.91	0.0203	1
+S009	云购生活·莆田旗舰店	福建省	232	624605.27	0.0196	2
+S056	云购生活·开封社区店	河南省	233	622674.19	0.0196	3
+S031	云购生活·嘉兴社区店	浙江省	230	618481.49	0.0194	4
+S053	云购生活·株洲一店	湖南省	225	600003.7	0.0188	5
+Time taken: 1.474 seconds, Fetched: 5 row(s)
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.057 seconds
+OK
+store_cnt	total_gmv	max_min_ratio
+60	3.184552795E7	1.45
+Time taken: 1.469 seconds, Fetched: 1 row(s)
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.057 seconds
+OK
+ads_member_level_sales.member_level	ads_member_level_sales.buyer_cnt	ads_member_level_sales.order_cnt	ads_member_level_sales.gmv	ads_member_level_sales.aov	ads_member_level_sales.arpu	ads_member_level_sales.gmv_share
+金卡会员	273	3382	8682160.68	2567.17	31802.79	0.2726
+钻石会员	253	3190	8097884.6599999955	2538.52	32007.45	0.2543
+普通会员	244	3053	7792208.84999999	2552.31	31935.28	0.2447
+银卡会员	230	2880	7273273.7599999765	2525.44	31622.93	0.2284
+Time taken: 1.443 seconds, Fetched: 4 row(s)
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.05 seconds
+OK
+ads_weekend_sales.is_weekend	ads_weekend_sales.order_cnt	ads_weekend_sales.day_cnt	ads_weekend_sales.gmv	ads_weekend_sales.gmv_per_day	ads_weekend_sales.aov
+0	8935	262	2.279564844E7	87006.29	2551.28
+1	3570	104	9049879.51	87018.07	2534.98
+Time taken: 0.051 seconds, Fetched: 2 row(s)
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.049 seconds
+OK
+ads_repeat_purchase.bucket	ads_repeat_purchase.user_cnt	ads_repeat_purchase.gmv	ads_repeat_purchase.arpu	ads_repeat_purchase.gmv_share
+10-19单	755	2.574115816E7	34094.25	0.8083
+5-9单	203	4082565.16	20111.16	0.1282
+20单及以上	37	1978221.02	53465.43	0.0621
+2-4单	5	43583.61	8716.72	0.0014
+Time taken: 1.436 seconds, Fetched: 4 row(s)
+OK
+sec	_c1	_c2	_c3	_c4	_c5	_c6
+Time taken: 0.052 seconds
+OK
+ads_month_mom.stat_month	ads_month_mom.gmv	ads_month_mom.order_cnt	ads_month_mom.aov	ads_month_mom.prev_gmv	ads_month_mom.mom_pct
+2024-01	2822591.29	1071	2635.47	NULL	NULL
+2024-02	2543763.62	985	2582.5	2822591.29	-9.88
+2024-03	2690192.29	1060	2537.92	2543763.62	5.76
+2024-04	2670250.38	1015	2630.79	2690192.29	-0.74
+2024-05	2706702.6	1080	2506.21	2670250.38	1.37
+2024-06	2442234.72	948	2576.2	2706702.6	-9.77
+2024-07	2639587.58	1056	2499.61	2442234.72	8.08
+2024-08	2732709.98	1090	2507.07	2639587.58	3.53
+2024-09	2580602.64	1024	2520.12	2732709.98	-5.57
+2024-10	2633628.29	1091	2413.96	2580602.64	2.05
+2024-11	2603398.4	1011	2575.07	2633628.29	-1.15
+2024-12	2779866.16	1074	2588.33	2603398.4	6.78
+Time taken: 1.445 seconds, Fetched: 12 row(s)
+Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/store
+OK
+ads_store_sales.store_id	ads_store_sales.store_name	ads_store_sales.province	ads_store_sales.order_cnt	ads_store_sales.gmv	ads_store_sales.gmv_share	ads_store_sales.rank_no
+Time taken: 1.5 seconds
+Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/member
+OK
+ads_member_level_sales.member_level	ads_member_level_sales.buyer_cnt	ads_member_level_sales.order_cnt	ads_member_level_sales.gmv	ads_member_level_sales.aov	ads_member_level_sales.arpu	ads_member_level_sales.gmv_share
+Time taken: 1.499 seconds
+Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/weekend
+OK
+ads_weekend_sales.is_weekend	ads_weekend_sales.order_cnt	ads_weekend_sales.day_cnt	ads_weekend_sales.gmv	ads_weekend_sales.gmv_per_day	ads_weekend_sales.aov
+Time taken: 1.465 seconds
+Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/repeat
+OK
+ads_repeat_purchase.bucket	ads_repeat_purchase.user_cnt	ads_repeat_purchase.gmv	ads_repeat_purchase.arpu	ads_repeat_purchase.gmv_share
+Time taken: 1.462 seconds
+Moving data to local directory D:/cxdownload/ydsh-datawarehouse/docs/w2_raw/mom
+OK
+ads_month_mom.stat_month	ads_month_mom.gmv	ads_month_mom.order_cnt	ads_month_mom.aov	ads_month_mom.prev_gmv	ads_month_mom.mom_pct
+Time taken: 1.487 seconds

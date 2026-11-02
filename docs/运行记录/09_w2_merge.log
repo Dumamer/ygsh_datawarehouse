@@ -1,0 +1,52 @@
+OK
+Time taken: 0.704 seconds
+OK
+Time taken: 0.379 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/dim_code_mapping/.hive-staging_hive_2026-11-02_10-20-39_531_1906295207541049187-1/-ext-10000
+Loading data to table ydsh_tmp.dim_code_mapping
+OK
+col1	col2	col3	col4
+Time taken: 4.156 seconds
+OK
+Time taken: 0.004 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_order_final
+OK
+o.order_id	o.user_id	o.store_id	order_timestamp	order_date	o.pay_amount	o.pay_amount_is_repaired	o.discount_amount	pay_type	order_status	channel
+Time taken: 5.019 seconds
+OK
+Time taken: 0.003 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-20-49_274_8797719473609959302-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_user_final
+OK
+user_id	user_name	gender	member_level	region	province	city	age	age_is_filled	register_date	phone	email
+Time taken: 1.662 seconds
+OK
+Time taken: 0.004 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_behavior_final
+OK
+b.user_id	b.product_id	behavior_type	b.behavior_time	b.behavior_date
+Time taken: 1.667 seconds
+OK
+chk	pay_type	c
+行为类型	浏览	34160
+行为类型	购买	11969
+行为类型	加购	8286
+行为类型	收藏	5585
+订单支付方式	微信支付	4001
+订单支付方式	支付宝	3973
+订单支付方式	货到付款	3551
+订单支付方式	银行卡	3475
+订单渠道	APP	3864
+订单渠道	门店	3724
+订单渠道	PC官网	3714
+订单渠道	小程序	3698
+订单状态	已完成	5668
+订单状态	已支付	4324
+订单状态	待支付	2116
+订单状态	已取消	2075
+订单状态	退款中	817
+Time taken: 8.271 seconds, Fetched: 17 row(s)
+OK
+chk	c
+时间戳非标准残留	0
+Time taken: 1.403 seconds, Fetched: 1 row(s)

@@ -1,0 +1,51 @@
+OK
+Time taken: 0.745 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_user_clean
+OK
+u.user_id	u.user_name	u.gender	u.member_level	u.city	u.province	u.email	age	age_is_filled	register_date	phone	phone_len
+Time taken: 4.374 seconds
+OK
+Time taken: 0.008 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_order_dedup
+OK
+t.order_id	t.user_id	t.store_id	t.order_date	t.order_time	t.pay_amount	t.discount_amount	t.pay_type_code	t.order_status_code	t.channel_code	t.rn
+Time taken: 1.707 seconds
+OK
+Time taken: 0.006 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_item_amount
+OK
+order_id	item_amount
+Time taken: 1.703 seconds
+OK
+Time taken: 0.004 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_order_clean
+OK
+d.order_id	d.user_id	d.store_id	order_date	d.order_time	pay_amount	pay_amount_is_repaired	discount_amount	d.pay_type_code	d.order_status_code	d.channel_code
+Time taken: 1.769 seconds
+OK
+Time taken: 0.004 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-19-58_836_3230869314853604044-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_item_clean
+OK
+item_id	order_id	product_id	quantity	unit_price	discount	line_amount
+Time taken: 1.568 seconds
+OK
+Time taken: 0.005 seconds
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/.hive-staging_hive_2026-11-02_10-20-00_523_4165358967463508197-1/-ext-10002
+Moving data to directory file:/D:/cxdownload/_setup/warehouse/ydsh_tmp.db/t_behavior_clean
+OK
+user_id	product_id	behavior_type_code	behavior_time	behavior_date
+Time taken: 1.588 seconds
+OK
+chk	v
+用户年龄-填充后残留越界/空	0
+用户注册日期-非标准格式	0
+订单日期-非标准格式	0
+订单-金额仍异常行数	0
+行为-时间非标准格式	0
+明细-数量非正残留	0
+用户手机号-非11位	0
+订单-去重后行数	15000
+订单-负折扣残留	0
+明细-负单价残留	0
+Time taken: 16.842 seconds, Fetched: 10 row(s)
