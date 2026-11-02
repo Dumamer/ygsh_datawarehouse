@@ -2,7 +2,7 @@
 
 > 企业级数据仓库与经营分析可视化系统 —— 从 6 张原始 CSV 到可支撑经营决策的分析体系
 
-![week](https://img.shields.io/badge/进度-第1周-brightgreen) ![hive](https://img.shields.io/badge/Hive-3.1.3-blue) ![license](https://img.shields.io/badge/用途-课程实训-lightgrey)
+![week](https://img.shields.io/badge/进度-第2周-brightgreen) ![hive](https://img.shields.io/badge/Hive-3.1.3-blue) ![license](https://img.shields.io/badge/用途-课程实训-lightgrey)
 
 ---
 
@@ -70,24 +70,45 @@ ydsh-datawarehouse/
 │  │  ├─ load_ods.sql                 # 6 张 CSV 导入
 │  │  └─ verify_ods.sql               # 行数校验（对比数据字典）
 │  ├─ quality/
-│  │  └─ data_quality_check.sql       # 五维度质量扫描
-│  └─ clean/
-│     ├─ clean_user_missing.sql       # 缺失值诊断与处理
-│     └─ clean_order_dedup.sql        # 重复值检测与去重
+│  │  ├─ data_quality_check.sql       # 第 1 周五维度质量扫描
+│  │  ├─ w2_repair_rate.sql           # 第 2 周：清洗前后修复率（37 条记录 / 20 类问题）
+│  │  └─ w2_export_tsv.sql            # 第 2 周：指标结果导出 tsv（供报告排版）
+│  ├─ clean/
+│  │  ├─ clean_user_missing.sql       # 第 1 周：缺失值诊断与处理
+│  │  ├─ clean_order_dedup.sql        # 第 1 周：重复值检测与去重
+│  │  ├─ w2_01_enum_normalize.sql     # 第 2 周：6 个枚举字段标准化 + 去空格
+│  │  ├─ w2_02_anomaly_format.sql     # 第 2 周：异常值修正 + 日期/时间/手机号格式归一 + 去重
+│  │  └─ w2_03_merge_encode.sql       # 第 2 周：32 条编码映射表 + order_timestamp / region 合并
+│  ├─ dwd/
+│  │  ├─ create_dwd.sql               # 第 2 周：星型模型 DDL（3 事实 + 5 维度，ORC/分区/分桶）
+│  │  └─ load_dwd.sql                 # 第 2 周：维度全量加载 + 事实表动态分区加载
+│  └─ analysis/
+│     ├─ w2_explore.sql               # 第 2 周：DWS 汇总 + ADS 指标 + 窗口函数
+│     └─ w2_explore_extra.sql         # 第 2 周：门店/会员/周末/复购/环比五个补充分析
 ├─ scripts/
-│  ├─ run_all.sh                      # 一键跑通本周全部 SQL
+│  ├─ run_all.sh                      # 第 1 周：一键跑通 ODS→质量→清洗
+│  ├─ run_week2.sh                    # 第 2 周：一键跑通 07~15 全部步骤
 │  ├─ hive-local.sh                   # Windows 无 Docker 时的本地模式启动器
 │  ├─ data_profiling.py               # 质量数据交叉校验（Python 版）
-│  └─ build_quality_report.py         # 生成《数据质量预评估表.xlsx》
+│  ├─ build_quality_report.py         # 生成《数据质量预评估表.xlsx》
+│  ├─ build_w2_report.py              # 生成《数据质量清洗报告.xlsx》
+│  ├─ make_arch_diagram.py            # 渲染四层架构图 PNG
+│  └─ make_screenshots.py             # 从真实日志渲染关键截图
 ├─ docs/
 │  ├─ 环境搭建笔记.md                  # 踩坑记录与解决方案
-│  ├─ 数据质量预评估表.xlsx            # 五维度扫描结果（交付物 5）
+│  ├─ 数据质量预评估表.xlsx            # 第 1 周五维度扫描结果
 │  ├─ 数据质量预评估说明.md            # 结论解读
+│  ├─ 数据质量清洗报告.xlsx / .md      # 第 2 周：修复率对比报告
+│  ├─ 数仓架构设计文档.md              # 第 2 周：四层架构 + 命名规范 + 分区分桶策略
+│  ├─ 第2周_探索性分析简报.md          # 第 2 周：核心指标与分布分析
 │  ├─ 模拟数据字典.md                  # 6 张表字段与脏数据分布
 │  ├─ 答辩提纲.md                      # 5~8 分钟汇报提纲 + 预设追问
-│  ├─ workai_第1周_AI协同日志.md       # AI 协同日志（交付物 7）
-│  ├─ 运行记录/                        # 各脚本真实执行输出（证据留存）
-│  └─ quality_raw/                     # 质量指标原始导出（tsv，可复现）
+│  ├─ workai_第1周_AI协同日志.md       # 第 1 周 AI 协同日志
+│  ├─ workai_第2周_AI协同日志.md       # 第 2 周 AI 协同日志
+│  ├─ screenshots/                     # 关键执行截图（PNG）
+│  ├─ 运行记录/                        # 各脚本真实执行输出 01~15（证据留存）
+│  ├─ quality_raw/                     # 第 1 周质量指标原始导出
+│  └─ w2_raw/                          # 第 2 周指标结果原始导出（tsv）
 └─ data/                               # 原始 CSV（已 gitignore，不入库）
 ```
 
@@ -107,8 +128,12 @@ bash ../scripts/run_all.sh    # 一键执行建表 -> 导入 -> 校验 -> 质量
 ```bash
 # 依赖：JDK 8 + Hadoop 3.1.1(winutils) + Hive 3.1.3，配置见 docs/环境搭建笔记.md
 export HIVE_BIN="bash $(pwd)/scripts/hive-local.sh"
-bash scripts/run_all.sh
+bash scripts/run_all.sh          # 第 1 周：ODS 建表 → 导入 → 校验 → 质量 → 清洗
+bash scripts/run_week2.sh        # 第 2 周：枚举标准化 → 异常/格式 → 编码映射 → DWD → 修复率 → 探索分析
 ```
+
+> 第 2 周脚本依次执行 07~15 共 9 步，每步的完整输出落在 `docs/运行记录/`，
+> 报告与简报中的每个数字都能在该目录找到出处。
 
 ## 八、第 1 周完成情况
 
@@ -148,7 +173,63 @@ bash scripts/run_all.sh
 | `dwd_product` 上架日期空值 | 11 | 0 |
 | `dwd_order` 行数（重复） | 15,600（600 行重复） | 15,000（0 重复） |
 
-## 九、Git 提交规范（Conventional Commits）
+## 九、第 2 周完成情况
+
+### 9.1 交付物清单（任务书 §五）
+
+| # | 交付物 | 状态 | 位置 |
+|:---:|---|:---:|---|
+| 1 | 枚举标准化 / 异常值 / 格式清洗脚本 | ✅ | `sql/clean/w2_01~03` |
+| 2 | 数据质量对比报告 | ✅ | `docs/数据质量清洗报告.xlsx` + `.md` |
+| 3 | 数仓架构设计文档 | ✅ | `docs/数仓架构设计文档.md`、`docs/screenshots/06_数仓四层架构图.png` |
+| 4 | DWD 层建模与 ETL 脚本 | ✅ | `sql/dwd/create_dwd.sql`、`load_dwd.sql` |
+| 5 | 探索性分析简报 | ✅ | `docs/第2周_探索性分析简报.md` |
+| 6 | Git 提交记录 | ✅ | 按子任务拆分，见提交历史 |
+| 7 | AI 协同日志（二） | ✅ | `docs/workai_第2周_AI协同日志.md` |
+
+### 9.2 清洗成果：五类脏数据全部收敛
+
+| 脏数据类型 | 清洗前 | 清洗后残留 | 修复率 | 关键策略 |
+|---|---:|---:|---:|---|
+| 缺失值 | 380 | 0 | 100% | 年龄中位数填充 + 标记位、性别/等级填默认值、上架日期按品类均值回退；**邮箱 193 条策略性保留** |
+| 重复值 | 600 | 0 | 100% | `ROW_NUMBER` 四级排序（金额有效性 > 时间新 > 金额大 > 兜底） |
+| 异常值 | 2,886 | 0 | 100% | 金额明细回填 / 置 NULL 打标；折扣与单价取绝对值；数量 ≤0 整行剔除 |
+| 枚举值 | 60,601 | 0 | 100% | 性别/等级走 `CASE WHEN`，状态/支付/渠道/行为走 32 条编码映射表 JOIN |
+| 格式 | 8,217 | 0 | 100% | 日期斜杠与紧凑格式归一、行为时间补秒位、手机号去分隔符 |
+| **合计** | **72,684** | **0** | **100%** | 20 类问题逐项可查，见报告「2-修复率总表」 |
+
+### 9.3 DWD 层建模结果
+
+| 层 | 表 | 行数 | 存储 |
+|---|---|---:|---|
+| DWD 维度 | dim_user / dim_product / dim_store / dim_date / dim_code_mapping | 1,000 / 600 / 60 / 731 / 32 | ORC |
+| DWD 事实 | dwd_order | 15,000 | ORC + 366 个日分区 |
+| DWD 事实 | dwd_order_item | 36,831 | ORC + 按 order_id 分 8 桶 |
+| DWD 事实 | dwd_user_behavior | 60,000 | ORC + 92 个日分区 |
+
+> 踩坑记录：本地模式默认 `hive.exec.max.dynamic.partitions.pernode=100`，
+> 而 `dwd_order` 需要 366 个日分区，超出上限时**不报错、只静默失败**（`MapRedTask return code 2`）。
+> 调到 1000 后一次写出全部分区，详见 `docs/运行记录/11_load_dwd.log` 与第 2 周 AI 日志。
+
+### 9.4 探索性分析核心数字
+
+| 指标 | 值 | 指标 | 值 |
+|---|---:|---|---:|
+| 有效订单量 | 12,505 | 总 GMV | ¥31,845,527.95 |
+| 购买用户数 | 1,000 | 客单价 AOV | ¥2,546.62 |
+| 人均下单 | 12.51 单 | 折扣率 / 退款中占比 | 12.80% / 6.31% |
+| 品类 CR3 | 42.66% | 省份 CR3 / 门店 TOP1 占比 | 22.29% / 2.03% |
+
+**一致性自检**：12 个月 GMV 相加 = `ads_kpi_overview.total_gmv`，差额 **0.00 元**，四层口径传递无损耗。
+
+### 9.5 结论一句话版
+
+> 清洗侧：五类脏数据 72,684 个问题点全部收敛到 0，20 类问题逐项可查、可复现。
+> 建模侧：星型模型 + 日分区 + 分桶落成，月度汇总与总 GMV 严格对齐。
+> 分析侧：指标链路已闭环，但**渠道四等分、会员等级无差异、周末零效应、复购高度集中**四项
+> 证明模拟数据为独立随机生成——简报已把这些划为「数据局限」，而不是包装成经营结论。
+
+## 十、Git 提交规范（Conventional Commits）
 
 | 前缀 | 用途 | 示例 |
 |---|---|---|
@@ -161,11 +242,11 @@ bash scripts/run_all.sh
 
 **提交粒度**：一个子任务一到两次提交，提交信息说清「做了什么、为什么」。
 
-## 十、参考资料
+## 十一、参考资料
 
 - [GitHub Docs](https://docs.github.com/) · [Git Reference](https://git-scm.com/doc)
 - [Apache Hive 官方文档](https://hive.apache.org/) · [Docker Docs](https://docs.docker.com/)
 
 ---
 
-<div align="center">workai · 第 1 周交付 · 2026-10</div>
+<div align="center">workai · 第 2 周交付 · 2026-11</div>
